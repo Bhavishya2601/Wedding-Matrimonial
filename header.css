@@ -1,0 +1,86 @@
+.poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+.leaf1, .leaf2{
+    height: 300px;
+    position: fixed;
+    z-index: 3;
+}
+.leaf1{
+    left: -4%;
+    top: 1%;
+}
+.leaf2{
+    right: 0;
+    bottom: 0;
+}
+nav{
+    height: 70px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    color: #66451C;
+    position: fixed;
+    width: 94%;
+    top: 0;
+    z-index:4;
+    background-color: white;
+}
+.header_img img{
+    height: 50px;
+}
+.header{
+    display: flex;
+    gap: 80px;
+    font-size: 16px;
+}
+.header div{
+    cursor: pointer;
+}
+.login button{
+    padding: 8px 20px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.footer{
+    padding: 100px;
+    background-color: #dee7ed;
+    color: #415764;
+    position: relative;
+}
+.footer_head{
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+.footer1{
+    display: flex;
+    justify-content: space-between;
+}
+.footer12{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;  
+}
+.footer3{
+    width: 160px;
+}
+.footer4{
+    display: flex;
+    justify-content: space-between;
+}
+.footer_box{
+    position: absolute;
+    top: -8%;
+    left: 25%;
+    background-color: #ff166c;
+    color: white;
+    border-radius: 10px;
+    padding: 20px 50px;
+    font-size: 22px;
+}

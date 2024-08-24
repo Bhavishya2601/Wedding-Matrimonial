@@ -1,0 +1,367 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.cinzel-decorative-bold {
+    font-family: "Cinzel Decorative", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+body{
+    background-color: #fefbf1;
+}
+.main {
+    margin-top: 70px;
+    height: calc(100vh - 70px);
+    position: relative;
+    overflow: hidden;
+}
+
+.main1 {
+    z-index: 2;
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    padding-top: 180px;
+    width: 100%;
+    font-family: serif;
+    line-height: 65px;
+}
+
+.background {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    animation: zoom 8s ease-in-out infinite;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+.matrimony {
+    background-color: black;
+    margin: auto;
+    width: 1100px;
+    padding: 10px;
+    box-shadow: 0px 80px 1000px 100px;
+}
+
+.dropdown {
+    width: 210px;
+    height: 45px;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-left: 2px;
+    color: #66451C;
+}
+
+.submit {
+    background-color: #607d8b;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 5px;
+}
+
+.service1 {
+    color: rgb(196, 140, 70);
+    text-align: center;
+}
+
+.flowers img {
+    height: 35px;
+}
+
+.flowers {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    padding-bottom: 40px;
+}
+
+.service {
+    padding: 50px 100px;
+    background-color: black;
+}
+
+.slide1,
+.slide2,
+.slide3,
+.slide4,
+.slide5 {
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    height: 385px;
+    width: 300px;
+}
+
+.slide1 {
+    background-image: url(img/img1.jpg);
+}
+
+.slide2 {
+    background-image: url(img/img2.jpg);
+}
+
+.slide3 {
+    background-image: url(img/img3.jpg);
+}
+
+.slide4 {
+    background-image: url(img/img4.jpg);
+}
+
+.slide5 {
+    background-image: url(https://rn53themes.net/themes/matrimo/images/about/1.jpg);
+}
+
+.img1 {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding-top: 80px;
+    align-items: center;
+    text-align: center;
+}
+
+.img1 img {
+    border: 2px solid white;
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    height: 110px;
+    width: 110px;
+}
+
+.img2 {
+    font-size: 30px;
+    color: white;
+    line-height: 28px;
+}
+
+.couple1 {
+    color: rgb(102, 69, 28);
+    font-size: 50px;
+    gap: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.couple {
+    padding: 25px 0;
+}
+.splide__slide{
+    position: relative;
+    overflow: visible;
+}
+.couple_main {
+    padding: 30px;
+    padding-top: 80px;
+    border-radius: 10px;
+    border: 1px solid #dbccbb;
+    color: rgb(102, 69, 28);
+    margin: 60px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+.couple_slider{
+    margin: 0 100px;
+}
+.couple2 {
+    position: absolute;
+    top: 0%;
+    left: 5%;
+    width: 150px;
+    height: 150px;
+    overflow: visible;
+}
+.couple2 img{
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    clip-path: polygon(50% 0px, 100% 50%, 50% 100%, 0px 50%); 
+}
+.couple button, .register{
+    display: block;
+    margin: auto;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.about{
+    display: flex;
+    flex-direction: row;
+    padding: 20px 100px 20px 50px;
+    gap: 20px;
+}
+.about1{
+    width: 50%;
+    position: relative;
+}
+.about2{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #66451C;
+    font-weight: 500;
+    min-height: 700px;
+}
+.about11{
+    border: 7px solid #f0a805;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+}
+.about12{
+    height: 550px;
+    width: 470px;
+    object-fit: cover;
+    position: absolute;
+    top: 6%;
+    left: 8%;
+    border-radius: 10px;
+}
+.about13{
+    height: 300px;
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 15px;
+    z-index: 2;
+}
+.about14{
+    border: 7px solid #ffe2f0;
+    height: 150px;
+    width: 150px;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+}
+.about21{
+    display: flex;
+    justify-content: space-evenly;
+    color: black;
+    padding-top: 50px;    
+}
+.about22{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.about21 svg{
+    height: 25px;
+    padding: 8px;
+    border-radius: 50%;
+    border: 8px solid #e4e1db;
+    background-color: black;
+}
+.about23{
+    display: flex;
+    flex-direction: column;
+}
+
+.blog1{
+    display: flex;
+    padding: 20px 100px;
+    justify-content: space-between;
+}
+.blog12{
+    width: 390px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.blog12 img{
+    height: 410px;
+    width: 100%;
+    object-fit: cover;
+}
+.blog121{
+    color: #eb0359;
+    font-weight: bold;
+    font-size: 15px;
+}
+.blog122{
+    font-size: 28px;
+}
+.blog123{
+    font-size: 18px;
+}
+.blog1 button{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    width: 120px;
+}
+.perfect_main{
+    background-color: #ffeebf;
+    margin: 100px;
+    border-radius: 20px;
+}
+.perfect{
+    padding: 50px 100px 0 100px;
+    color: #66451C;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+}
+.register{
+    margin: 0;
+}
+.help{
+    background-color: #ffeebf;
+    color: 66451C;
+    padding: 10px;
+    font-weight: bold;
+}
+.perfect1{
+    display: flex;
+    margin: auto;
+    gap: 10px;
+}
+.perfect_main img{
+    padding-top: 10px;
+    height: 70px;
+    width: 300px;
+    animation: 4000s linear 0s infinite normal both running movehor;
+}
+@keyframes movehor {
+    0% {
+        background-position: 0px -18px;
+    }
+
+    100% {
+        background-position: -10000% -18px;
+    }
+}
