@@ -76,7 +76,3 @@ splide.mount();
 document.getElementById('login').addEventListener('click', ()=>{
     window.location.href = '../pages/login.html'
 })
-document.getElementById('login-btn').addEventListener('submit', ()=>{
-    // window.location.href = 'https://www.google.com/'
-    alert('hello')
-})
