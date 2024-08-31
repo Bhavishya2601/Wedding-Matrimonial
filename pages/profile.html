@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .container-upper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .left {
+      color: #333;
+      font-size: 16px;
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+    }
+
+    .sort-dropdown {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 8px 12px;
+      margin-right: 10px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .sort-dropdown select {
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      font-size: 14px;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .sort-dropdown::after {
+      content: "\25BC";
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .view-buttons {
+      display: flex;
+    }
+
+    .view-button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+
+    .view-button.grid {
+      background-color: #f2f2f2;
+    }
+
+    .view-button.list {
+      background-color: #f2f2f2;
+    }
+
+    .view-button i {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .container-left {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 50px auto;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input[type=radio] {
+      margin-right: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group select,
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Profile cards styling */
+    .profile-card {
+      display: flex;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .profile-header {
+      position: relative;
+    }
+
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .status-indicator {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 20px;
+      height: 20px;
+      background-color: #4CAF50;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    .availability {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .profile-details {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .profile-name {
+      font-size: 24px;
+      color: #b3005f;
+      margin-bottom: 10px;
+    }
+
+    .profile-info {
+      margin-bottom: 20px;
+    }
+
+    .info-tag {
+      background-color: #e0e7ed;
+      color: #4b6584;
+      padding: 5px 10px;
+      border-radius: 20px;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    .profile-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-button {
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      background-color: white;
+      color: #4b6584;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .action-button.chat-now {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+    }
+
+    .action-button:hover {
+      background-color: #f0f0f0;
+    }
+
+    .action-button.chat-now:hover {
+      background-color: #45a049;
+    }
+
+    .action-button.whatsapp {
+      border-color: #25D366;
+      color: #25D366;
+    }
+
+    .action-button.whatsapp:hover {
+      background-color: #25D366;
+      color: white;
+    }
+
+    .action-button.send-interest,
+    .action-button.more-details {
+      border-color: #4b6584;
+      color: #4b6584;
+    }
+
+    .action-button.send-interest:hover,
+    .action-button.more-details:hover {
+      background-color: #4b6584;
+      color: white;
+    }
+
+    .middle-part {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .middle-part .col-lg-4,
+    .middle-part .col-md-7 {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .container {
+      padding: 20px;
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+
+    .header {
+      text-align: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .column h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .column ul li {
+      margin-bottom: 5px;
+    }
+
+    .social-media a {
+      margin-right: 10px;
+      text-decoration: none;
+      font-size: 14px;
+      color: #8b005f;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+    .footer p a {
+      color: #8b005f;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="container-upper">
+      <div class="left">
+        Showing <strong>32</strong> profiles
+      </div>
+      <div class="right">
+        <div class="sort-dropdown">
+          <select>
+            <option value="most-relative">Most relative</option>
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </div>
+        <div class="view-buttons">
+          <button class="view-button grid">
+            <i class="fas fa-th"></i>
+          </button>
+          <button class="view-button list">
+            <i class="fas fa-list"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- middle-part section -->
+    <div class="middle-part">
+      <div class="row">
+        <div class="col-lg-4 col-md-12">
+          <div class="container-left">
+            <h2>Find Your Match</h2>
+            <form>
+              <div class="form-group">
+                <label for="lookingFor">I'm looking for:</label>
+                <select name="lookingFor" id="lookingFor">
+                  <option value="">Select</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="age">Age:</label>
+                <select name="age" id="age">
+                  <option value="">Select</option>
+                  <option value="18-25">18-25</option>
+                  <option value="26-35">26-35</option>
+                  <option value="36-45">36-45</option>
+                  <option value="46-55">46-55</option>
+                  <option value="56+">56+</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="religion">Religion:</label>
+                <select name="religion" id="religion">
+                  <option value="">Select</option>
+                  <option value="Hindu">Hindu</option>
+                  <option value="Muslim">Muslim</option>
+                  <option value="Christian">Christian</option>
+                  <option value="Sikh">Sikh</option>
+                  <option value="Jain">Jain</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="location">Location:</label>
+                <select name="location" id="location">
+                  <option value="">Select</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Bangalore">Bangalore</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Kolkata">Kolkata</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Availability:</label>
+                <div>
+                  <input type="radio" name="availability" id="availability-all" value="All">
+                  <label for="availability-all">All</label>
+                  <input type="radio" name="availability" id="availability-available" value="Available">
+                  <label for="availability-available">Available</label>
+                  <input type="radio" name="availability" id="availability-offline" value="Offline">
+                  <label for="availability-offline">Offline</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Profile:</label>
+                <div>
+                  <input type="radio" name="profile" id="profile-all" value="All">
+                  <label for="profile-all">All</label>
+                  <input type="radio" name="profile" id="profile-premium" value="Premium">
+                  <label for="profile-premium">Premium</label>
+                  <input type="radio" name="profile" id="profile-free" value="Free">
+                  <label for="profile-free">Free</label>
+                </div>
+              </div>
+              <button type="submit" class="button">Send your queries</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- cards section -->
+        <div class="col-lg-8 col-md-12">
+          <div class="profile-cards-container">
+            <div class="profile-card">
+              <div class="profile-header">
+                <img
+                  src="https://img.freepik.com/free-photo/beautiful-girl-stands-park_8353-5084.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1724976000&semt=ais_hybrid"
+                  alt="Profile Picture" class="profile-image">
+                <span class="status-indicator"></span>
+                <div class="availability">Available Online</div>
+              </div>
+              <div class="profile-details">
+                <h2 class="profile-name">Ashley emyy</h2>
+                <div class="profile-info">
+                  <span class="info-tag">B.Sc</span>
+                  <span class="info-tag">IT Profession</span>
+                  <span class="info-tag">29 Year old</span>
+                  <span class="info-tag">Height: 155Cms</span>
+                </div>
+                <div class="profile-actions">
+                  <button class="action-button chat-now">Chat now</button>
+                  <button class="action-button whatsapp">WhatsApp</button>
+                  <button class="action-button send-interest">Send interest</button>
+                  <button class="action-button more-details">More details</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="profile-card">
+              <div class="profile-header">
+                <img
+                  src="https://img.freepik.com/free-photo/beautiful-girl-with-glasses-holding-smartphone-city_146671-15604.jpg"
+                  alt="Elizabeth Taylor" class="profile-image">
+                <span class="status-indicator offline"></span>
+                <div class="availability offline">Last online on 10:00 AM</div>
+              </div>
+              <div class="profile-details">
+                <h2 class="profile-name">Elizabeth Taylor</h2>
+                <div class="profile-info">
+                  <span class="info-tag">B.Sc</span>
+                  <span class="info-tag">IT Profession</span>
+                  <span class="info-tag">29 Year old</span>
+                  <span class="info-tag">Height: 155Cms</span>
+                </div>
+                <div class="profile-actions">
+                  <button class="action-button chat-now">Chat now</button>
+                  <button class="action-button whatsapp">WhatsApp</button>
+                  <button class="action-button send-interest">Send interest</button>
+                  <button class="action-button more-details">More details</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="profile-card">
+              <div class="profile-header">
+                <img
+                  src="https://img.freepik.com/free-photo/beautiful-woman-with-smartphone-shopping-mall_146671-16566.jpg"
+                  alt="Angelina Jolie" class="profile-image">
+                <span class="status-indicator online"></span>
+                <div class="availability">Available Online</div>
+              </div>
+              <div class="profile-details">
+                <h2 class="profile-name">Angelina Jolie</h2>
+                <div class="profile-info">
+                  <span class="info-tag">B.Sc</span>
+                  <span class="info-tag">IT Profession</span>
+                  <span class="info-tag">29 Year old</span>
+                  <span class="info-tag">Height: 155Cms</span>
+                </div>
+                <div class="profile-actions">
+                  <button class="action-button chat-now">Chat now</button>
+                  <button class="action-button whatsapp">WhatsApp</button>
+                  <button class="action-button send-interest">Send interest</button>
+                  <button class="action-button more-details">More details</button>
+                </div>
+              </div>
+            </div>
+            <div class="profile-card">
+              <div class="profile-header">
+                <img
+                  src="https://img.freepik.com/free-photo/beautiful-woman-with-smartphone-shopping-mall_146671-16566.jpg"
+                  alt="Angelina Jolie" class="profile-image">
+                <span class="status-indicator online"></span>
+                <div class="availability">Available Online</div>
+              </div>
+              <div class="profile-details">
+                <h2 class="profile-name">Angelina Jolie</h2>
+                <div class="profile-info">
+                  <span class="info-tag">B.Sc</span>
+                  <span class="info-tag">IT Profession</span>
+                  <span class="info-tag">29 Year old</span>
+                  <span class="info-tag">Height: 155Cms</span>
+                </div>
+                <div class="profile-actions">
+                  <button class="action-button chat-now">Chat now</button>
+                  <button class="action-button whatsapp">WhatsApp</button>
+                  <button class="action-button send-interest">Send interest</button>
+                  <button class="action-button more-details">More details</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <br><br>
+
+        <br>
+        <div class="header" style="margin-top: 10px;">
+          <h1>Company name Site</h1>
+        </div>
+
+        <div class="content">
+          <div class="column">
+            <h2>GET IN TOUCH</h2>
+            <ul>
+              <li>Address: 3812 Lena Lane City Jackson Mississippi</li>
+              <li>Phone: +92 (8800) 68 - 8960</li>
+              <li>Email: info@example.com</li>
+            </ul>
+          </div>
+
+          <div class="column">
+            <h2>HELP & SUPPORT</h2>
+            <ul>
+              <li>About company</li>
+              <li>Feedback</li>
+              <li>Testimonials</li>
+            </ul>
+          </div>
+
+          <div class="column">
+            <h2>SOCIAL MEDIA</h2>
+            <div class="social-media">
+              <a href="#" target="_blank">Facebook</a>
+              <a href="#" target="_blank">Twitter</a>
+              <a href="#" target="_blank">Instagram</a>
+              <a href="#" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

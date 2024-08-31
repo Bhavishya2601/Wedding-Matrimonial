@@ -57,13 +57,13 @@ body{
 .matrimony {
     background-color: black;
     margin: auto;
-    width: 1100px;
+    width: 80vw;
     padding: 10px;
     box-shadow: 0px 80px 1000px 100px;
 }
 
 .dropdown {
-    width: 210px;
+    width: 15vw;
     height: 45px;
     padding: 10px;
     font-size: 18px;
@@ -114,19 +114,19 @@ body{
 }
 
 .slide1 {
-    background-image: url(img/img1.jpg);
+    background-image: url(../img/img1.jpg);
 }
 
 .slide2 {
-    background-image: url(img/img2.jpg);
+    background-image: url(../img/img2.jpg);
 }
 
 .slide3 {
-    background-image: url(img/img3.jpg);
+    background-image: url(../img/img3.jpg);
 }
 
 .slide4 {
-    background-image: url(img/img4.jpg);
+    background-image: url(../img/img4.jpg);
 }
 
 .slide5 {
@@ -363,5 +363,69 @@ body{
 
     100% {
         background-position: -10000% -18px;
+    }
+}
+@media (max-width: 1440px) {
+    .blog12{
+        width: 26vw;
+    }
+    .footer{
+        padding: 100px 30px;
+    }
+}
+@media (max-width: 1100px){
+    .service{
+        padding: 50px 30px;
+    }
+    .perfect_main{
+        margin: 100px 30px;
+    }
+    .blog1{
+        padding: 20px 40px;
+    }
+    .blog12{
+        width: 28vw;
+    }  
+    .leaf1, .leaf2{
+        height: 150px;
+    } 
+    .leaf1{
+        top: 10%;
+    }
+}
+@media (max-width: 850px){
+    .footer1{
+        flex-direction: column;
+    }
+    .footer12{
+        width: 70vw;
+        padding: 30px 0;
+        margin: auto;
+    }
+    .footer2nd{
+        padding: 30px 0;
+        border-top: 2px solid #b9c6cf;
+        border-bottom: 2px solid #b9c6cf;
+    }
+}
+@media (max-width: 768px) {
+    .main1{
+        padding-top: 50px;
+    }
+    .dropdown{
+        width: 35vw;
+    }
+    .submit{
+        width: 70vw;
+    }
+    .blog1{
+        flex-direction: column;
+        gap: 40px;
+    }
+    .blog12{
+        width: 100%;
+    }
+    .blog12 img{
+        height: 50vh;
     }
 }

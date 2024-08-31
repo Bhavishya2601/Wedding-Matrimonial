@@ -1,5 +1,5 @@
 // code for background change 
-const img = ["img/banner.jpg", "img/ban-bg.jpg"]
+const img = ["../img/banner.jpg", "../img/ban-bg.jpg"]
 
 let index = 0;
 
@@ -27,10 +27,14 @@ var splide = new Splide('#splide1', {
     autoplay: true,
     pagination: false,
     breakpoints: {
-        640: {
+        1400:{
+            perPage: 3,
+            gap: '.7rem'
+            // height: '6rem',
+        },
+        768:{
             perPage: 2,
-            gap: '.7rem',
-            height: '6rem',
+            gap: '.7rem'
         },
         480: {
             perPage: 1,
@@ -55,17 +59,24 @@ var splide = new Splide('#splide2', {
     autoplay: true,
     pagination: false,
     breakpoints: {
-        640: {
+        1024: {
             perPage: 2,
             gap: '.7rem',
-            height: '6rem',
         },
-        480: {
+        768: {
             perPage: 1,
             gap: '.7rem',
-            height: '6rem',
         },
     },
 });
 
 splide.mount();
+
+
+document.getElementById('login').addEventListener('click', ()=>{
+    window.location.href = '../pages/login.html'
+})
+document.getElementById('login-btn').addEventListener('submit', ()=>{
+    // window.location.href = 'https://www.google.com/'
+    alert('hello')
+})

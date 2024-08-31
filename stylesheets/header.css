@@ -29,6 +29,10 @@ nav{
     z-index:4;
     background-color: white;
 }
+.header a{
+    color: #66451C;
+    text-decoration: none;
+}
 .header_img img{
     height: 50px;
 }
@@ -60,7 +64,8 @@ nav{
 }
 .footer1{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    padding-top: 30px;
 }
 .footer12{
     display: flex;
@@ -77,10 +82,16 @@ nav{
 .footer_box{
     position: absolute;
     top: -8%;
-    left: 25%;
+    left: 23%;
+    right: 23%;
     background-color: #ff166c;
     color: white;
     border-radius: 10px;
     padding: 20px 50px;
     font-size: 22px;
+}
+.footer_icon svg{
+    height: 30px;
+    padding-left: 3px;
+    cursor: pointer;
 }
