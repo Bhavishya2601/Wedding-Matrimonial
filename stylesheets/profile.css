@@ -1,0 +1,271 @@
+.container-upper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .left {
+    color: #333;
+    font-size: 16px;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+  }
+
+  .sort-dropdown {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+    width: 120px;
+  }
+
+  .sort-dropdown select {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  .sort-dropdown::after {
+    content: "\25BC";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .view-buttons {
+    display: flex;
+  }
+
+  .view-button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+
+  .view-button.grid {
+    background-color: #f2f2f2;
+  }
+
+  .view-button.list {
+    background-color: #f2f2f2;
+  }
+
+  .view-button i {
+    font-size: 18px;
+    color: #333;
+  }
+
+  .container-left {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 50px auto;
+    max-width: 400px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  input[type=radio] {
+    margin-right: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .form-group select,
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+
+
+
+ #availability-all {
+  margin-left: 110px;
+ }
+ #availability-available {
+  margin-left: 65px;
+ }
+ #availability-offline {
+  margin-left: 81px;
+ }
+
+
+ #profile-all{
+  margin-left: 110px;
+ }
+ #profile-premium {
+  margin-left: 66px;
+ }
+ #profile-free{
+  margin-left: 98px;
+
+ }
+
+
+  .button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Profile cards styling */
+  .profile-card {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .profile-header {
+    position: relative;
+  }
+
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .status-indicator {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+
+  .availability {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile-details {
+    padding: 20px;
+    flex: 1;
+  }
+
+  .profile-name {
+    font-size: 24px;
+    color: #b3005f;
+    margin-bottom: 10px;
+  }
+
+  .profile-info {
+    margin-bottom: 20px;
+  }
+
+  .info-tag {
+    background-color: #e0e7ed;
+    color: #4b6584;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 14px;
+  }
+
+  .profile-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .action-button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: white;
+    color: #4b6584;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .action-button.chat-now {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  }
+
+  .action-button:hover {
+    background-color: #f0f0f0;
+  }
+
+  .action-button.chat-now:hover {
+    background-color: #45a049;
+  }
+
+  .action-button.whatsapp {
+    border-color: #25D366;
+    color: #25D366;
+  }
+
+  .action-button.whatsapp:hover {
+    background-color: #25D366;
+    color: white;
+  }
+
+  .action-button.send-interest,
+  .action-button.more-details {
+    border-color: #4b6584;
+    color: #4b6584;
+  }
+
+  .action-button.send-interest:hover,
+  .action-button.more-details:hover {
+    background-color: #4b6584;
+    color: white;
+  }
