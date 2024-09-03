@@ -49,14 +49,14 @@
       <div class="right2">Sign in to Matrimony</div>
       <div class="right3">Not a member? <a href="signup.html">Sign up now</a></div>
       <hr>
-      <form id="login-user">
+      <form id="login-user" action="./profile.html">
         <div class="form-group">
           <label for="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="Enter email">
+          <input type="email" id="email" name="email" placeholder="Enter email" required>
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
-          <input type="password" id="password" name="password" placeholder="Enter password">
+          <input type="password" id="password" name="password" placeholder="Enter password" required>
         </div>
         <div class="checkbox">
           <label>
@@ -77,8 +77,8 @@
     <div class="footer1">
         <div class="footer12">
             <div class="footer_head">GET IN TOUCH</div>
-            <div>Address: 3812 Chandni Chowk, Delhi</div>
-            <div>Phone: +91 9999999999</div>
+            <div>Address: 3812 Lena Lane City Jackson Mississippi</div>
+            <div>Phone: +92 (8800) 68 - 8960</div>
             <div>Email: info@example.com</div>
         </div>
         <div class="footer12 footer2nd">
@@ -109,12 +109,6 @@
 </div>
 <div style="background-color: #cddcdf; text-align: center; padding: 10px 0;">Copyright &copy; 2024 Company.com All
     rights reserved.</div>
-  <script>
-    document.getElementById('login-user').addEventListener('submit', (event)=>{
-      event.preventDefault()
-      window.location.href = 'profile.html'
-    })
-  </script>
 </body>
 
 </html>
