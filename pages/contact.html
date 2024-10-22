@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../stylesheets/header.css">
     <link rel="shortcut icon" href="https://rn53themes.net/themes/matrimo/images/fav.ico" type="image/x-icon">
 </head>
+
 <body>
     <img class="leaf1" src="https://rn53themes.net/themes/matrimo/images/leaf/5.png">
     <img class="leaf2" src="https://rn53themes.net/themes/matrimo/images/leaf/8.png">
@@ -24,55 +26,59 @@
         </div>
         <div class="login"><button id="login1">LOGIN</button></div>
     </nav>
+
     <div class="top">
         <h2>We are here to assist you.</h2>
         <h1>Contact us</h1>
         <p>Most Trusted and premium Matrimony Service in the World.</p>
     </div>
+
     <div class="container">
         <div class="left-div">
             <div style="padding: 30px;">
-
                 <h2>Now Contact to us Easy and fast.</h2>
                 <div class="images">
-                    <img src="https://rn53themes.net/themes/matrimo/images/login-couple.png" alt="Couple" class="couple-image">
+                    <img src="https://rn53themes.net/themes/matrimo/images/login-couple.png" alt="Couple"
+                        class="couple-image">
                 </div>
             </div>
             <div class="celebration-container">
                 <div class="celebration">
-                    <img src="https://rn53themes.net/themes/matrimo/images/login-bg.png" alt="Celebration" class="celebration-image">
-                    <img src="https://rn53themes.net/themes/matrimo/images/login-bg.png" alt="Celebration" class="celebration-image">
-                    <img src="https://rn53themes.net/themes/matrimo/images/login-bg.png" alt="Celebration" class="celebration-image">
+                    <img src="https://rn53themes.net/themes/matrimo/images/login-bg.png" alt="Celebration"
+                        class="celebration-image">
+                    <img src="https://rn53themes.net/themes/matrimo/images/login-bg.png" alt="Celebration"
+                        class="celebration-image">
+                    <img src="https://rn53themes.net/themes/matrimo/images/login-bg.png" alt="Celebration"
+                        class="celebration-image">
                 </div>
             </div>
         </div>
+
         <div class="right-div">
             <h3>Let's Talk</h3>
             <h1>Send your enquiry now</h1>
-            <form class="enquiry-form">
+            <form id="enquiryForm" class="enquiry-form">
+                <input type="hidden" name="access_key" value="ffe8fb26-9164-4766-9ecf-96308f9bffea">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your full name">
-
+                <input type="text" name="name" id="name" placeholder="Enter your full name" required>
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter email">
-
+                <input type="email" name="email" id="email" placeholder="Enter email" required>
                 <label for="phone">Phone:</label>
                 <input type="tel" id="phone" name="phone" placeholder="Enter phone number">
-
                 <label for="message">Message:</label>
-                <textarea id="message" name="message" placeholder="Enter message"></textarea>
-
-                <button type="submit">Send Enquiry</button>
+                <textarea name="message" id="message" placeholder="Enter  message" required></textarea>
+                <button type="submit" id="submitBtn">Submit Form</button>
             </form>
         </div>
     </div>
+
     <div class="footer poppins-regular" style="width: 98.9vw;">
         <div class="footer_box">Free support: +92 (8800) 68 - 8960&emsp;|&emsp;Email: info@example.com</div>
         <div class="footer1">
             <div class="footer12">
                 <div class="footer_head">GET IN TOUCH</div>
-                <div>Address: 3812 Chandni Chowk, Delhi</div>
-                <div>Phone: +91 9999999999</div>
+                <div>Address: 3812 Lena Lane City Jackson Mississippi</div>
+                <div>Phone: +92 (8800) 68 - 8960</div>
                 <div>Email: info@example.com</div>
             </div>
             <div class="footer12 footer2nd">
@@ -98,10 +104,44 @@
             </div>
         </div>
         <hr style="margin: 60px; border-color: rgb(216, 216, 216);">
-        <div style="text-align:center;">Company name Site - Trusted by over thousands of Boys & Girls for successfull
+        <div style="text-align:center;">Company name Site - Trusted by over thousands of Boys & Girls for successful
             marriage.</div>
     </div>
-    <div style="background-color: #cddcdf; text-align: center; padding: 10px 0; width: 98.9vw;">Copyright &copy; 2024 Company.com All
-        rights reserved.</div>
+
+    <div style="background-color: #cddcdf; text-align: center; padding: 10px 0; width: 98.9vw;">Copyright &copy; 2024
+        Company.com All rights reserved.</div>
+
+    <script>
+        const form = document.getElementById('enquiryForm');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const jsonData = JSON.stringify(Object.fromEntries(formData));
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: jsonData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Form submitted successfully!");
+                    form.reset(); 
+                } else {
+                    alert("Failed to submit form. Please try again.");
+                }
+            })
+            .catch(error => {
+                alert("Error submitting the form. Please try again later.");
+                console.error("Error:", error);
+            });
+        });
+    </script>
 </body>
+
 </html>

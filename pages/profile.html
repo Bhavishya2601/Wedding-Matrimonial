@@ -2,293 +2,584 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../stylesheets/header.css">
-  <link rel="stylesheet" href="../stylesheets/profile.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profiles - Wedding Matrimonial</title>
+    <link rel="shortcut icon" href="https://rn53themes.net/themes/matrimo/images/fav.ico" type="image/x-icon">  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container-upper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-top: 80px;
+        }
+
+        .left {
+            color: #333;
+            font-size: 16px;
+        }
+
+        .right {
+            display: flex;
+            align-items: center;
+        }
+
+        .sort-dropdown {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin-right: 10px;
+            cursor: pointer;
+            position: relative;
+            width: 120px;
+        }
+
+        .sort-dropdown select {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            font-size: 14px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .sort-dropdown::after {
+            content: "\25BC";
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .view-buttons {
+            display: flex;
+        }
+
+        .view-button {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .view-button.grid {
+            background-color: #f2f2f2;
+        }
+
+        .view-button.list {
+            background-color: #f2f2f2;
+        }
+
+        .view-button i {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .container-left {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 50px auto;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input[type=radio] {
+            margin-right: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Profile cards styling */
+        .profile-card {
+            display: flex;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .profile-header {
+            position: relative;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .status-indicator {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .availability {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .profile-details {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            color: #b3005f;
+            margin-bottom: 10px;
+        }
+
+        .profile-info {
+            margin-bottom: 20px;
+        }
+
+        .info-tag {
+            background-color: #e0e7ed;
+            color: #4b6584;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-button {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            background-color: white;
+            color: #4b6584;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-button.chat-now {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        .action-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .action-button.chat-now:hover {
+            background-color: #45a049;
+        }
+
+        .action-button.whatsapp {
+            border-color: #25D366;
+            color: #25D366;
+        }
+
+        .action-button.whatsapp:hover {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .action-button.send-interest,
+        .action-button.more-details {
+            border-color: #4b6584;
+            color: #4b6584;
+        }
+
+        .action-button.send-interest:hover,
+        .action-button.more-details:hover {
+            background-color: #4b6584;
+            color: white;
+        }
+        .button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.text-center {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    gap: 10px; /* Space between buttons */
+}
+
+    </style>
+        <link rel="stylesheet" href="../stylesheets/header.css">
 </head>
 
 <body>
-    <img class="leaf1" src="https://rn53themes.net/themes/matrimo/images/leaf/5.png">
-    <img class="leaf2" src="https://rn53themes.net/themes/matrimo/images/leaf/8.png">
-    <nav class="poppins-regular" style="width: 100%;">
-        <div class="header_img"><img src="https://rn53themes.net/themes/matrimo/images/logo-b.png"
-                alt="Wedding Matrimony"></div>
-        <div class="header">
-            <div><a href="../index.html">HOME</a></div>
-            <div><a href="#">ABOUT US</a></div>
-            <div><a href="#">PROFILES</a></div>
-            <div><a href="#">GALLERY</a></div>
-            <div><a href="../pages/contact.html">CONTACT US</a></div>
-        </div>
-        
-    </nav>
-  <div class="container-fluid" style="background-color:ivory; overflow: hidden; margin-top: 70px;">
-    <div class="container-upper">
-      <div class="left">
-        Showing <strong>32</strong> profiles
+  <img class="leaf1" src="https://rn53themes.net/themes/matrimo/images/leaf/5.png">
+  <img class="leaf2" src="https://rn53themes.net/themes/matrimo/images/leaf/8.png">
+  <nav class="poppins-regular">
+      <div class="header_img"><img src="https://rn53themes.net/themes/matrimo/images/logo-b.png" alt="Wedding Matrimony"></div>
+      <div class="header">
+          <div><a href="../index.html">HOME</a></div>
+          <div><a href="#">ABOUT US</a></div>
+          <div><a href="profile.html">PROFILES</a></div>
+          <div><a href="#">GALLERY</a></div>
+          <div><a href="contact.html">CONTACT US</a></div>
       </div>
-      <div class="right">
-        <div class="sort-dropdown" >
-          <select>
-            <option value="most-relative">Most relative</option>
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-          </select>
+  </nav>
+    <div class="container">
+        <div class="container-upper">
+            <div class="left">
+                Showing <strong id="profile-count">0</strong> profiles
+            </div>
+            <div class="right">
+                <div class="sort-dropdown">
+                    <select id="sortSelect">
+                        <option value="most-relative">Most relevant</option>
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                    </select>
+                </div>
+                <div class="view-buttons">
+                    <button class="view-button grid">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-button list">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="view-buttons">
-          <button class="view-button grid">
-            <i class="fas fa-th"></i>
-          </button>
-          <button class="view-button list">
-            <i class="fas fa-list"></i>
-          </button>
+
+        <div class="middle-part" style="border: 1px solid ivory;">
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <div class="container-left">
+                        <h2>Find Your Match</h2>
+                        <form id="filterForm">
+                            <div class="form-group">
+                                <label for="lookingFor">I'm looking for:</label>
+                                <select name="lookingFor" id="lookingFor">
+                                    <option value="">Select</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age:</label>
+                                <select name="age" id="age">
+                                    <option value="">Select</option>
+                                    <option value="18-25">18 to 25</option>
+                                    <option value="26-35">26 to 35</option>
+                                    <option value="36-45">36 to 45</option>
+                                    <option value="46-55">46 to 55</option>
+                                    <option value="56+">56+</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="religion">Religion:</label>
+                                <select name="religion" id="religion">
+                                    <option value="">Select</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Muslim">Muslim</option>
+                                    <option value="Christian">Christian</option>
+                                    <option value="Sikh">Sikh</option>
+                                    <option value="Jain">Jain</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location:</label>
+                                <select name="location" id="location">
+                                    <option value="">Select</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Bangalore">Bangalore</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Delhi">Delhi</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Availability:</label>
+                                <div>
+                                    <input type="radio" id="available" name="availability" value="Available" checked>
+                                    <label for="available">Available</label>
+                                    <input type="radio" id="notAvailable" name="availability" value="Not Available">
+                                    <label for="notAvailable">Not Available</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Profile Type:</label>
+                                <div>
+                                    <input type="radio" id="individual" name="profile" value="Individual" checked>
+                                    <label for="individual">Individual</label>
+                                    <input type="radio" id="couple" name="profile" value="Couple">
+                                    <label for="couple">Couple</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="button">Filter</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-md-12">
+                    <div id="cont" class="row"></div>
+                </div>
+            </div>
         </div>
+
+        <div class="text-center" style="margin: 60px; ">
+          <button id="showMoreBtn" class="button" style="align-items: center; margin-right: 10px;">Show More</button>
+          <button id="showLessBtn" class="button" style="display: none;">Show Less</button>
       </div>
+      
     </div>
-
-    <!-- middle-part section -->
-    <div class="middle-part" style="border: 1px solid ivory;">
-      <div class="row">
-        <div class="col-lg-4 col-md-12">
-          <div class="container-left">
-            <h2>Find Your Match</h2>
-            <form>
-              <div class="form-group">
-                <label for="lookingFor">I'm looking for:</label>
-                <select name="lookingFor" id="lookingFor">
-                  <option value="">Select</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="age">Age:</label>
-                <select name="age" id="age">
-                  <option value="">Select</option>
-                  <option value="18-25">18-25</option>
-                  <option value="26-35">26-35</option>
-                  <option value="36-45">36-45</option>
-                  <option value="46-55">46-55</option>
-                  <option value="56+">56+</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="religion">Religion:</label>
-                <select name="religion" id="religion">
-                  <option value="">Select</option>
-                  <option value="Hindu">Hindu</option>
-                  <option value="Muslim">Muslim</option>
-                  <option value="Christian">Christian</option>
-                  <option value="Sikh">Sikh</option>
-                  <option value="Jain">Jain</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="location">Location:</label>
-                <select name="location" id="location">
-                  <option value="">Select</option>
-                  <option value="Chennai">Chennai</option>
-                  <option value="Bangalore">Bangalore</option>
-                  <option value="Mumbai">Mumbai</option>
-                  <option value="Delhi">Delhi</option>
-                  <option value="Hyderabad">Hyderabad</option>
-                  <option value="Kolkata">Kolkata</option>
-                </select>
-              </div>
-              <div class="radio-btn">
-                <label style="font-weight: bold;">Availability:</label> <br><br>
-                <div>
-                  <label for="availability-all">All</label> 
-                  <input type="radio" name="availability" id="availability-all" value="All">
-                  
-                  <br> <br> 
-                  <label for="availability-available">Available</label>
-                  <input type="radio" name="availability" id="availability-available" value="Available">
-                  
-                  <br> <br>
-                  <label for="availability-offline">Offline</label>
-                  <input type="radio" name="availability" id="availability-offline" value="Offline">
-                  <br><br>
-                  
-                </div>
-              </div>
-              <div class="radio-btn">
-                <label style="font-weight: bold;">Profile:</label> <br> <br>
-                <div>
-
-                  
-                    <label for="profile-all" >All</label>
-                    <input type="radio" name="profile" id="profile-all" value="All" >
-                    <br><br>
-
-                  
-                 
-                 
-                  <label for="profile-premium">Premium</label>
-                  <input type="radio" name="profile" id="profile-premium" value="Premium">
-                  <br><br>
-
-
-                  <label for="profile-free">Free</label>
-                  <input type="radio" name="profile" id="profile-free" value="Free">
-                  <br><br>
-                  
-                </div>
-              </div>
-              <button type="submit" class="button">Send your queries</button>
-            </form>
+    <div class="footer poppins-regular">
+      <div class="footer_box">Free support: +92 (8800) 68 - 8960&emsp;|&emsp;Email: info@example.com</div>
+      <div class="footer1">
+          <div class="footer12">
+              <div class="footer_head">GET IN TOUCH</div>
+              <div>Address: 3812 Lena Lane City Jackson Mississippi</div>
+              <div>Phone: +92 (8800) 68 - 8960</div>
+              <div>Email: info@example.com</div>
           </div>
-        </div>
-
-        <!-- cards section -->
-        <div class="col-lg-8 col-md-12 mt-5">
-          <div class="profile-cards-container">
-            <div class="profile-card">
-              <div class="profile-header">
-                <img
-                  src="https://img.freepik.com/free-photo/beautiful-girl-stands-park_8353-5084.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1724976000&semt=ais_hybrid"
-                  alt="Profile Picture" class="profile-image">
-                <span class="status-indicator"></span>
-                <div class="availability">Available Online</div>
+          <div class="footer12 footer2nd">
+              <div class="footer_head">HELP & SUPPORT</div>
+              <div class="footer4">
+                  <div class="footer3">About company</div>
+                  <div class="footer3">Contact us</div>
               </div>
-              <div class="profile-details">
-                <h2 class="profile-name" style="text-align: left;">Ashley emyy</h2>
-                <div class="profile-info">
-                  <span class="info-tag">B.Sc</span>
-                  <span class="info-tag">IT Profession</span>
-                  <span class="info-tag">29 Year old</span>
-                  <span class="info-tag">Height: 155Cms</span>
-                </div>
-                <div class="profile-actions">
-                  <button class="action-button chat-now">Chat now</button>
-                  <button class="action-button whatsapp">WhatsApp</button>
-                  <button class="action-button send-interest">Send interest</button>
-                  <button class="action-button more-details">More details</button>
-                </div>
+              <div class="footer4">
+                  <div class="footer3">Feedback</div>
+                  <div class="footer3">FAQs</div>
               </div>
-            </div>
-
-            <div class="profile-card">
-              <div class="profile-header">
-                <img
-                  src="https://img.freepik.com/free-photo/beautiful-girl-with-glasses-holding-smartphone-city_146671-15604.jpg"
-                  alt="Elizabeth Taylor" class="profile-image">
-                <span class="status-indicator offline"></span>
-                <div class="availability offline">Last online on 10:00 AM</div>
-              </div>
-              <div class="profile-details">
-                <h2 class="profile-name" style="text-align: left;">Elizabeth Taylor</h2>
-                <div class="profile-info">
-                  <span class="info-tag">B.Sc</span>
-                  <span class="info-tag">IT Profession</span>
-                  <span class="info-tag">29 Year old</span>
-                  <span class="info-tag">Height: 155Cms</span>
-                </div>
-                <div class="profile-actions">
-                  <button class="action-button chat-now">Chat now</button>
-                  <button class="action-button whatsapp">WhatsApp</button>
-                  <button class="action-button send-interest">Send interest</button>
-                  <button class="action-button more-details">More details</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="profile-card">
-              <div class="profile-header">
-                <img
-                  src="https://img.freepik.com/free-photo/beautiful-woman-with-smartphone-shopping-mall_146671-16566.jpg"
-                  alt="Angelina Jolie" class="profile-image">
-                <span class="status-indicator online"></span>
-                <div class="availability">Available Online</div>
-              </div>
-              <div class="profile-details">
-                <h2 class="profile-name" style="text-align: left;">Angelina Jolie</h2>
-                <div class="profile-info">
-                  <span class="info-tag">B.Sc</span>
-                  <span class="info-tag">IT Profession</span>
-                  <span class="info-tag">29 Year old</span>
-                  <span class="info-tag">Height: 155Cms</span>
-                </div>
-                <div class="profile-actions">
-                  <button class="action-button chat-now">Chat now</button>
-                  <button class="action-button whatsapp">WhatsApp</button>
-                  <button class="action-button send-interest">Send interest</button>
-                  <button class="action-button more-details">More details</button>
-                </div>
-              </div>
-            </div>
-            <div class="profile-card">
-              <div class="profile-header">
-                <img
-                  src="https://img.freepik.com/free-photo/beautiful-woman-with-smartphone-shopping-mall_146671-16566.jpg"
-                  alt="Angelina Jolie" class="profile-image">
-                <span class="status-indicator online"></span>
-                <div class="availability">Available Online</div>
-              </div>
-              <div class="profile-details">
-                <h2 class="profile-name" style="text-align: left;">Angelina Jolie</h2>
-                <div class="profile-info">
-                  <span class="info-tag">B.Sc</span>
-                  <span class="info-tag">IT Profession</span>
-                  <span class="info-tag">29 Year old</span>
-                  <span class="info-tag">Height: 155Cms</span>
-                </div>
-                <div class="profile-actions">
-                  <button class="action-button chat-now">Chat now</button>
-                  <button class="action-button whatsapp">WhatsApp</button>
-                  <button class="action-button send-interest">Send interest</button>
-                  <button class="action-button more-details">More details</button>
-                </div>
-              </div>
-            </div>
-
+              <div>Testimonials</div>
           </div>
-        </div>
-        <br><br>
+          <div class="footer12">
+              <div class="footer_head">SOCIAL MEDIA</div>
+              <div class="footer_icon">
+                  <img src="../img/linkedin.svg" alt="">
+                  <img src="../img/x.svg" alt="">
+                  <img src="../img/facebook.svg" alt="">
+                  <img src="../img/youtube.svg" alt="">
+              </div>
+          </div>
+      </div>
+      <hr style="margin: 60px; border-color: rgb(216, 216, 216);">
+      <div style="text-align:center;">Company name Site - Trusted by over thousands of Boys & Girls for successful marriage.</div>
+  </div>
+  <div style="background-color: #cddcdf; text-align: center; padding: 10px 0;">Copyright &copy; 2024 Company.com All rights reserved.</div>
+    <script>
+        const fruits = [
+        {
+                id: 1, name: 'Arsh', status: 'Available Online',
+                profession: 'Engineer', height: '5 cm',
+                gender: 'Male', religion: 'Hindu', location: 'Chennai', ageRange: '22' 
+            },
+            {
+                id: 2, name: 'Aryan', status: 'Available Online',
+                profession: 'Teacher', height: '10 cm',
+                gender: 'Male', religion: 'Muslim', location: 'Bangalore', ageRange: '26'
+            },
+            {
+                id: 3, name: 'Bhumi', status: 'Last online 10:00 AM',
+                profession: 'Professor', height: '15 cm',
+                gender: 'Female', religion: 'Christian', location: 'Mumbai', ageRange: '32'
+            },
+            {
+                id: 3, name: 'Chirag', status: 'Last online 10:00 AM',
+                profession: 'Doctor ', height: '15 cm',
+                gender: 'Female', religion: 'Christian', location: 'Mumbai', ageRange: '36'
+            }, 
+            {
+                id: 4, name: 'John', status: 'Available Online',
+                profession: 'Engineer', height: '5 cm',
+                gender: 'Male', religion: 'Hindu', location: 'Chennai', ageRange: '38'
+            },
+            {
+                id: 5, name: 'Shivam', status: 'Available Online',
+                profession: ' Doctor', height: '10 cm',
+                gender: 'Male', religion: 'Muslim', location: 'Bangalore', ageRange: '25'
+            },
+            {
+                id: 6, name: 'Ishika', status: 'Last online 10:00 AM',
+                profession: 'Engineer', height: '15 cm',
+                gender: 'Female', religion: 'Christian', location: 'Mumbai', ageRange: '37'
+            },
+            {
+                id: 7, name: 'Sakshi', status: 'Last online 10:00 AM',
+                profession: 'Professor', height: '15 cm',
+                gender: 'Female', religion: 'Christian', location: 'Mumbai', ageRange: '30'
+            },{
+                id: 8, name: 'Tanvi', status: 'Available Online',
+                profession: 'Engineer', height: '5 cm',
+                gender: 'Female', religion: 'Hindu', location: 'Chennai', ageRange: '21'
+            },
+            {
+                id: 9, name: 'Shreya', status: 'Available Online',
+                profession: 'Doctor', height: '10 cm',
+                gender: 'Female', religion: 'Muslim', location: 'Bangalore', ageRange: '28'
+            },
+            {
+                id: 10, name: 'Kanika', status: 'Last online 10:00 AM',
+                profession: 'Doctor', height: '15 cm',
+                gender: 'Female', religion: 'Christian', location: 'Mumbai', ageRange: '33 ' 
+            }
+            
+            
+            // Add more profiles as needed
+        ];
 
-        <br>
-        <div class="footer poppins-regular">
-            <div class="footer_box">Free support: +92 (8800) 68 - 8960&emsp;|&emsp;Email: info@example.com</div>
-            <div class="footer1">
-                <div class="footer12">
-                    <div class="footer_head">GET IN TOUCH</div>
-                    <div>Address: 3812 Chandni Chowk, Delhi</div>
-                    <div>Phone: +91 9999999999</div>
-                    <div>Email: info@example.com</div>
-                </div>
-                <div class="footer12 footer2nd">
-                    <div class="footer_head">HELP & SUPPORT</div>
-                    <div class="footer4">
-                        <div class="footer3">About company</div>
-                        <div class="footer3">Contact us</div>
+        let displayedCount = 4; // Number of profiles to show at once
+
+        window.onload = function () {
+            displayFruits(fruits);
+            document.getElementById('filterForm').addEventListener('submit', filterProfiles);
+            document.getElementById('showMoreBtn').addEventListener('click', showMore);
+            document.getElementById('showLessBtn').addEventListener('click', showLess);
+        };
+
+        function displayFruits(fruits) {
+            const cont = document.getElementById('cont');
+            cont.innerHTML = '';
+            const profileCount = document.getElementById('profile-count');
+            profileCount.innerText = fruits.length;
+
+            const fruitsToShow = fruits.slice(0, displayedCount); // Get the fruits to display
+            fruitsToShow.forEach(fruit => {
+                const div = document.createElement('div');
+                div.classList.add('col-md-4', 'profile-card');
+                div.innerHTML = `
+                    <div class="profile-header m-2">
+                        <img src="../img/${fruit.name}.jpg" alt="${fruit.name}" class="profile-image">
+                        <span class="status-indicator"></span>
+                        <div class="availability">${fruit.status}</div>
                     </div>
-                    <div class="footer4">
-                        <div class="footer3">Feedback</div>
-                        <div class="footer3">FAQs</div>
+                    <div class="profile-details">
+                        <h2 class="profile-name">${fruit.name}</h2>
+                        <p>Age Range: ${fruit.ageRange} Profession: ${fruit.profession} Height: ${fruit.height}</p>
+                        <div class="profile-actions">
+                            <button class="action-button chat-now">Chat now</button>
+                            <button class="action-button whatsapp">WhatsApp</button>
+                            <button class="action-button send-interest">Send Interest</button>
+                            <button class="action-button more-details">More Details</button>
+                        </div>
                     </div>
-                    <div>Testimonials</div>
-                </div>
-                <div class="footer12">
-                    <div class="footer_head">SOCIAL MEDIA</div>
-                    <div class="footer_icon">
-                        <img src="../img/linkedin.svg" alt="">
-                        <img src="../img/x.svg" alt="">
-                        <img src="../img/facebook.svg" alt="">
-                        <img src="../img/youtube.svg" alt="">
-                    </div>
-                </div>
-            </div>
-            <hr style="margin: 60px; border-color: rgb(216, 216, 216);">
-            <div style="text-align:center;">Company name Site - Trusted by over thousands of Boys & Girls for successfull
-                marriage.</div>
-        </div>
-        <div style="background-color: #cddcdf; text-align: center; padding: 10px 0;">Copyright &copy; 2024 Company.com All
-            rights reserved.</div>
+                `;
+                cont.appendChild(div);
+            });
+
+            // Show or hide the buttons based on the number of profiles
+            document.getElementById('showMoreBtn').style.display = displayedCount < fruits.length ? 'block' : 'none';
+            document.getElementById('showLessBtn').style.display = displayedCount > 3 ? 'block' : 'none';
+        }
+
+        function showMore() {
+            displayedCount += 3; // Increase the count of displayed profiles
+            displayFruits(fruits); // Redisplay the fruits with updated count
+        }
+
+        function showLess() {
+            displayedCount = Math.max(3, displayedCount - 3); // Decrease the count but not below 3
+            displayFruits(fruits); // Redisplay the fruits with updated count
+        }
+
+        function filterProfiles(event) {
+    event.preventDefault();
+    const lookingFor = document.getElementById('lookingFor').value;
+    const age = document.getElementById('age').value;
+    const religion = document.getElementById('religion').value;
+    const location = document.getElementById('location').value;
+    const availability = document.querySelector('input[name="availability"]:checked').value;
+
+    const filteredFruits = fruits.filter(fruit => {
+        const matchesLookingFor = lookingFor ? fruit.gender === lookingFor : true;
+        const matchesReligion = religion ? fruit.religion === religion : true;
+        const matchesLocation = location ? fruit.location === location : true;
+
+        // Age range filtering
+        if (age) {
+            const [minAge, maxAge] = age.split('-').map(Number);
+            const fruitAge = Number(fruit.ageRange.split('-')[0]);
+            return matchesLookingFor && matchesReligion && matchesLocation && 
+                   fruitAge >= minAge && (maxAge ? fruitAge <= maxAge : true);
+        }
+
+        return matchesLookingFor && matchesReligion && matchesLocation;
+    });
+
+    displayedCount = 3; // Reset displayed count for filtered results
+    displayFruits(filteredFruits);
+}
+
+    </script>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

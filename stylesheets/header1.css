@@ -16,15 +16,13 @@
     right: 0;
     bottom: 0;
 }
-nav{
+/* nav{
     height: 70px;
     align-items: center;
     display: flex;
     justify-content: space-between;
     padding: 0 50px;
     color: #66451C;
-    position: fixed;
-    width: 94%;
     top: 0;
     z-index:4;
     background-color: white;
@@ -38,8 +36,10 @@ nav{
 }
 .header{
     display: flex;
-    gap: 80px;
+    gap: 50px;
     font-size: 16px;
+    align-items: center;
+    display: none;
 }
 .header div{
     cursor: pointer;
@@ -51,7 +51,7 @@ nav{
     color: white;
     font-weight: bold;
     cursor: pointer;
-}
+} */
 .footer{
     padding: 100px;
     background-color: #dee7ed;
@@ -95,16 +95,91 @@ nav{
     padding-left: 3px;
     cursor: pointer;
 }
-@media (max-width:1100px){
-    .header{
-        gap: 20px
+
+
+
+
+@media (max-width: 1200px){
+    .menu{
+        gap: 20px;
     }
-    .header_img img{
-        height: 40px;
+    nav{
+        padding: 0 10px;
     }
 }
-@media (max-width: 750px){
-    .header{
-        display: none;
-    }
+
+
+.navbar-toggle .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: red;
+    border-radius: 1px;
+    color: black;
+  }
+  
+  .navbar {
+    background-color: white;
+  }
+  
+  .navbar a {
+    color: black;
+  }
+  
+  .navbar a:hover {
+    color: black; 
+  }
+  
+  .navbar-toggle .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: red;
+    border-radius: 1px;
+  }
+  .navbar {
+    background-color: white; 
+  }
+  
+  .navbar a {
+    color: black !important; 
+  }
+  
+  .navbar a:hover {
+    color: black !important; 
+  }
+  
+  .navbar a:focus {
+    color: black !important; 
+  }
+  
+  .navbar-toggle {
+    background-color: black;
+    border: none; 
+  }
+  
+  .navbar-toggle .icon-bar {
+    background-color: white; 
+  }
+  
+  .navbar-toggle:hover {
+    background-color: #333;
+  }
+  
+.navbar-brand img{
+    height: 40px;
+}
+.nav .clock{
+    padding: 10px ;
+    font-size: 15px;
+}
+.nav .login{
+    margin: 10px;
+    background-color: #66451C;
+    color: white;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+.navbar-inverse{
+    margin: 0;
 }
